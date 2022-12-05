@@ -1,5 +1,8 @@
 package com.rocketmq.nameserv;
 
+import com.rocketmq.nameserv.util.ServerUtil;
+import org.apache.commons.cli.Options;
+
 /**
  * @Author: zengqz
  * @Description: TODO
@@ -18,7 +21,7 @@ public class NamesrvStartup {
     }
 
     private static NameservController createNamesrvController(String[] args) {
-
+        Options options = ServerUtil.buildCommandlineOptions(new Options());
         return null;
     }
 
