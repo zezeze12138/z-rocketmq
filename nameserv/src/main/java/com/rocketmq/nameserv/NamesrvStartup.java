@@ -1,7 +1,9 @@
 package com.rocketmq.nameserv;
 
+import com.rocketmq.nameserv.config.NamesrvConfig;
+import com.rocketmq.nameserv.config.NettyServerConfig;
 import com.rocketmq.nameserv.util.ServerUtil;
-import org.apache.commons.cli.Options;
+import org.apache.commons.cli.*;
 
 /**
  * @Author: zengqz
@@ -22,6 +24,8 @@ public class NamesrvStartup {
 
     private static NameservController createNamesrvController(String[] args) {
         Options options = ServerUtil.buildCommandlineOptions(new Options());
+        final NamesrvConfig nameserConfig = new NamesrvConfig();
+        final NettyServerConfig nettyServerConfig = new NettyServerConfig();
         return null;
     }
 
