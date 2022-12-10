@@ -29,4 +29,10 @@ public class NamesrvStartup {
         return null;
     }
 
+    public static NameservController start(final NameservController controller){
+        boolean initResult = controller.initialize();
+
+
+        return controller;
+    }
 }

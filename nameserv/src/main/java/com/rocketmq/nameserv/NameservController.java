@@ -7,4 +7,16 @@ package com.rocketmq.nameserv;
  * @Version: 1.0
  */
 public class NameservController {
+
+
+    public boolean initialize(){
+
+        return true;
+    }
+
+
+    public void start(){
+
+    }
+
 }
