@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.rocketmq</groupId>
-    <artifactId>broker</artifactId>
+    <groupId>com.rokcetmq</groupId>
+    <artifactId>common</artifactId>
 
 
 </project>
