@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>z-rocketmq</artifactId>
-        <groupId>com,roketmq</groupId>
+        <groupId>com.roketmq</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,6 +16,11 @@
         <dependency>
             <groupId>com.rokcetmq</groupId>
             <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.roketmq</groupId>
+            <artifactId>remoting</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

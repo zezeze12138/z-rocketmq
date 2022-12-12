@@ -1,7 +1,7 @@
 package com.rocketmq.nameserv;
 
 import com.rocketmq.nameserv.config.NamesrvConfig;
-import com.rocketmq.nameserv.config.NettyServerConfig;
+import com.rocketmq.remoting.netty.NettyServerConfig;
 import com.rocketmq.nameserv.util.ServerUtil;
 import org.apache.commons.cli.*;
 
