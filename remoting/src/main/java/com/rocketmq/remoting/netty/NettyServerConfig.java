@@ -1,4 +1,6 @@
-package com.rocketmq.nameserv.config;
+package com.rocketmq.remoting.netty;
+
+import lombok.Data;
 
 /**
  * @Author: zengqz
@@ -6,6 +8,7 @@ package com.rocketmq.nameserv.config;
  * @CreateTime: 2022-12-06  23:31
  * @Version: 1.0
  */
+@Data
 public class NettyServerConfig implements Cloneable {
 
     private int listenPort = 8888;
@@ -15,7 +18,5 @@ public class NettyServerConfig implements Cloneable {
     private int serverOnewaySemphoreValue = 256;
     private int serverAsyncSemaphoreValue = 64;
     private int serverChannelMaxIdleTimeSeconds = 120;
-
-
 
 }
