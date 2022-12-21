@@ -33,5 +33,50 @@ public class NettyRemotingServer implements RemotingService{
     private final EventLoopGroup eventLoopGroupBoss;
     private final NettyServerConfig nettryServerConfig;
 
+    private final ChannelEventListener channelEventListener;
+
+    private DefaultEventExecutorGroup defaultEventExecutorGroup;
+
+    private static final String HANDSHAKE_HANDLER_NAME = "handshakeHandler";
+    private static final String TLS_HANDLER_NAME = "sslHandler";
+    private static final String FILE_REGION_ENCODER_NAME = "fileRegionEncoder";
+
+    protected volatile SslContext sslContext;
+
+    private HandshakeHandler handshakeHandler;
+    private NettyEncoder encoder;
+    private NettyConnectManageHandler connectionManageHandler;
+    private NettyServerHandler serverHandler;
+
+    public NettyRemotingServer(final NettyServerConfig nettryServerConfig, final ChannelEventListener channelEventListener) {
+
+        this.serverBootstrap = new ServerBootstrap();
+        this.nettryServerConfig = nettryServerConfig;
+        this.channelEventListener = channelEventListener;
+
+        int publicThreadNums = nettryServerConfig.getServerCallbackExecutorThreads();
+        if(publicThreadNums <= 0){
+            publicThreadNums = 4;
+        }
+
+        this.eventLoopGroupBoss = new NioEventLoopGroup(1, new ThreadFactory() {
+            private AtomicInteger threadIndex = new AtomicInteger(0);
+
+            public Thread newThread(Runnable r) {
+                return new Thread(r, String.format("NettyNIOBoos_%d", this.threadIndex.incrementAndGet()));
+            }
+        });
+
+        this.eventLoopGroupSelector = new NioEventLoopGroup(nettryServerConfig.getServerSelectorThreads(), new ThreadFactory() {
+            private AtomicInteger threadIndex = new AtomicInteger(0);
+            private int threadTotal = nettryServerConfig.getServerSelectorThreads();
+
+            public Thread newThread(Runnable r) {
+                return new Thread(r, String.format("NettyServerNIOSelector_%d_%d", threadTotal, this.threadIndex.incrementAndGet()));
+            }
+        });
+
+    }
+
 
 }
